@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  html,
+  body {
+    @apply font-mikhak;
+  }
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply relative flex items-center justify-center rounded-md py-3 px-5 text-sm leading-5 font-semibold transition-all duration-300 shadow-lg shadow-transparent;
+  }
+  .btn-primary {
+    @apply bg-primary shadow-primary/40 text-white hover:shadow-transparent;
+  }
+  .link {
+    @apply font-bold text-primary hover:underline;
+  }
+  .panel {
+    @apply relative rounded-md border p-4 bg-white dark:bg-dark dark:border-dark;
+  }
+  .form-input {
+    @apply w-full rounded-md border border-[#E0E6ED] px-2 py-3 text-sm leading-5 font-semibold outline-none focus:border-primary dark:bg-dark-color-secondary dark:border-dark-color-primary/10 dark:focus:border-primary;
+  }
+  .form-checkbox {
+    @apply h-4 w-4 cursor-pointer rounded-[0.25rem] border-2 border-[#E0E6ED] text-primary bg-transparent outline-none me-2 appearance-none checked:bg-current checked:bg-[url('/images/icons/checked.svg')] bg-no-repeat bg-center dark:border-dark-color-primary/50;
+  }
+  .checkbox-label {
+    @apply text-dark-color-primary;
+  }
+}

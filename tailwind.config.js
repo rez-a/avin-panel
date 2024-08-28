@@ -16,6 +16,7 @@ module.exports = {
         dark: '#0E1726',
         'dark-color-primary': '#888ea8',
         'dark-color-secondary': '#121e32',
+        danger: '#e7515a',
       },
       backgroundImage: {
         'auth-pattern': "url('/images/auth/background.svg')",

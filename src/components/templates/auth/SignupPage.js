@@ -1,24 +1,20 @@
 'use client';
 import Button from '@/components/extras/buttons/Button';
-import FormCheckbox from '@/components/shared/form/FormCheckbox';
 import FormInput from '@/components/shared/form/FormInput';
-import { PASSWORD } from '@/constants/formTypes';
 import Link from 'next/link';
 import React from 'react';
 import useHandleForm from '@/hooks/useHandleForm';
-import signinSchema from '@/validations/signinSchema';
+import signupSchema from '@/validations/signupSchema';
 
-const SigninPage = () => {
+const SignupPage = () => {
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
-    useHandleForm(signinSchema);
+    useHandleForm(signupSchema);
 
   const submitHandler = (values) => console.log(values);
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
-      <h2 className="mb-3 text-2xl font-bold">ورود</h2>
-      <p className="mb-7">
-        برای ورود کد ملی و رمز عبور خود را وارد کنید
-      </p>
+      <h2 className="mb-3 text-2xl font-bold">ثبت نام</h2>
+      <p className="mb-7">برای ثبت نام اطلاعات زیر را تکمیل کنید</p>
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="space-y-5"
@@ -36,33 +32,32 @@ const SigninPage = () => {
         />
         <FormInput
           {...{
-            id: 'password',
-            type: PASSWORD,
-            name: PASSWORD,
-            placeholder: 'رمزعبور خود را وارد کنید',
-            label: 'رمز عبور',
+            id: 'FullName',
+            name: 'FullName',
+            placeholder: 'نام و نام خانوادگی خود را وارد کنید',
+            label: 'نام و نام خانوادگی',
             errors,
             addToRefs: () => addToRefs(),
             register: (name) => register(name),
           }}
         />
-        <div className="flex items-center justify-between">
-          <FormCheckbox
-            id="remember"
-            name="remember"
-            label="مرا بخاطر بسپار"
-          />
-          <div>
-            <Link href="./forget-password" className="link">
-              <small>فراموشی رمز عبور</small>
-            </Link>
-          </div>
-        </div>
+        <FormInput
+          {...{
+            id: 'PhoneNumber',
+            name: 'PhoneNumber',
+            placeholder: 'شماره همراه خود را وارد کنید',
+            label: 'شماره همراه',
+            errors,
+            addToRefs: () => addToRefs(),
+            register: (name) => register(name),
+          }}
+        />
+
         <Button
           isSubmitting={isSubmitting}
           type="submit"
           variant="btn-primary"
-          title="ورود"
+          title="ثبت نام"
         />
       </form>
       <div className="relative my-7 h-5 text-center before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-[#ebedf2] dark:before:bg-[#253b5c]">
@@ -71,13 +66,13 @@ const SigninPage = () => {
         </div>
       </div>
       <p className="text-center">
-        حساب کاربری ندارید؟
-        <Link href="./signup" className="link">
-          ثبت نام
+        حساب کاربری دارید؟
+        <Link href="./signin" className="link">
+          ورود
         </Link>
       </p>
     </div>
   );
 };
 
-export default SigninPage;
+export default SignupPage;

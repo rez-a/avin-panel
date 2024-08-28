@@ -8,12 +8,12 @@ const Button = ({
 }) => {
   return (
     <button
-      disabled={isSubmitting}
+      disabled={type === 'button' ? false : isSubmitting}
       type={type}
       className={`btn w-full ${variant}`}
     >
       {title}
-      {isSubmitting && (
+      {type !== 'button' && isSubmitting && (
         <svg
           viewBox="0 0 24 24"
           width="24"

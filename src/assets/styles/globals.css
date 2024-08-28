@@ -37,4 +37,14 @@
   .checkbox-label {
     @apply text-dark-color-primary;
   }
+  .animate-count-down {
+    animation: count-down 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes count-down {
+  75%,
+  100% {
+    transform: scale(1.3);
+  }
 }

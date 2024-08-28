@@ -38,7 +38,7 @@ const SigninPage = () => {
           {...{
             id: 'password',
             type: PASSWORD,
-            name: PASSWORD,
+            name: 'Password',
             placeholder: 'رمزعبور خود را وارد کنید',
             label: 'رمز عبور',
             errors,

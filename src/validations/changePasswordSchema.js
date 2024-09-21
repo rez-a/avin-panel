@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { passwordRJX } from '../constants/patternRJX';
+import { PASSWORD_RJX } from '../constants/patternRJX';
 
 const changePasswordSchema = yup.object().shape({
   Otp: yup.string().required('وارد کردن کد ارسال شده الزامی است'),
@@ -8,7 +8,7 @@ const changePasswordSchema = yup.object().shape({
     .required('وارد کردن رمزعبور الزامی است')
     .min(6, 'رمز عبور شما باید حداقل 6 کاراکتر باشد')
     .matches(
-      passwordRJX,
+      PASSWORD_RJX,
       'رمز عبور شما باید دارای حروف بزرگ و کوچک و اعداد باشد'
     ),
   ConfirmPassword: yup

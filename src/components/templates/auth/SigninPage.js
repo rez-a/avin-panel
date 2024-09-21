@@ -7,22 +7,31 @@ import Link from 'next/link';
 import React from 'react';
 import useHandleForm from '@/hooks/useHandleForm';
 import signinSchema from '@/validations/signinSchema';
+import { signinAction } from '@/actions/auth/signinAction';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const SigninPage = () => {
+  const router = useRouter();
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(signinSchema);
 
-  const submitHandler = (values) => console.log(values);
+  const submit = async (values) => {
+    const res = await signinAction(values);
+    if (res.status) {
+      toast.success(res.message);
+      router.push('/dashboard');
+      return;
+    }
+    toast.error(res.message);
+  };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">ورود</h2>
       <p className="mb-7">
         برای ورود کد ملی و رمز عبور خود را وارد کنید
       </p>
-      <form
-        onSubmit={handleSubmit(submitHandler)}
-        className="space-y-5"
-      >
+      <form onSubmit={handleSubmit(submit)} className="space-y-5">
         <FormInput
           {...{
             id: 'NationalCode',

@@ -1,1 +1,1 @@
-export const defaultCountDown = 30;
+export const DEFAULT_COUNTDOWN = 30;

@@ -1,11 +1,11 @@
-import { defaultCountDown } from '@/constants/defaultValue';
+import { DEFAULT_COUNTDOWN } from '@/constants/defaultValue';
 import React, { useEffect, useState } from 'react';
 
 const CountDown = ({
   isFinishedCountDown,
   setIsFinishedCountDown,
 }) => {
-  const [second, setSecond] = useState(defaultCountDown);
+  const [second, setSecond] = useState(DEFAULT_COUNTDOWN);
 
   useEffect(() => {
     if (second > 0) {

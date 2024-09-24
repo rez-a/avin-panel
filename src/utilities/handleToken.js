@@ -31,8 +31,12 @@ const updateToken = (token) => {
 
 const reviewToken = async () => {
   const token = cookies().get(AVIN_AUTH)?.value;
-  const res = await handleReviewToken({ Token: token });
-  return res.status;
+  try {
+    const res = await handleReviewToken({ Token: token });
+    return res.status;
+  } catch (err) {
+    return false;
+  }
 };
 
 export {

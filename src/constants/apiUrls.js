@@ -4,6 +4,10 @@ const API_URLS = {
       URL: '/user/login/',
       METHOD: 'post',
     },
+    SIGNUP: {
+      URL: '/user/create/',
+      METHOD: 'post',
+    },
     REVIEW_TOKEN: {
       URL: '/token/check/',
       METHOD: 'post',

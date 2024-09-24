@@ -13,6 +13,17 @@ const handleSignin = async (data) => {
   return res;
 };
 
+
+const handleSignup = async (data) => {
+  const res = await handleRequests(authInstance, {
+    url: API_URLS.USER.SIGNUP.URL,
+    method: API_URLS.USER.SIGNUP.METHOD,
+    data,
+  });
+
+  return res;
+};
+
 const handleReviewToken = async (data) => {
   const res = await handleRequests(dashboardInstance, {
     url: API_URLS.USER.REVIEW_TOKEN.URL,
@@ -22,4 +33,4 @@ const handleReviewToken = async (data) => {
   return res;
 };
 
-export { handleSignin, handleReviewToken };
+export { handleSignin, handleSignup, handleReviewToken };

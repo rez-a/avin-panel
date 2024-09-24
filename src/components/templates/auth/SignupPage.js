@@ -5,20 +5,32 @@ import Link from 'next/link';
 import React from 'react';
 import useHandleForm from '@/hooks/useHandleForm';
 import signupSchema from '@/validations/signupSchema';
+import { signupAction } from '@/actions/auth/signupAction';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const SignupPage = () => {
+  const router = useRouter();
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(signupSchema);
 
-  const submitHandler = (values) => console.log(values);
+  const submit = async (values) => {
+    const res = await signupAction(values);
+    try {
+      if (res.status) toast.success(res.message);
+      else throw new Error();
+    } catch (err) {
+      toast.error(res.message);
+    } finally {
+      router.push('/signin');
+      return;
+    }
+  };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">ثبت نام</h2>
       <p className="mb-7">برای ثبت نام اطلاعات زیر را تکمیل کنید</p>
-      <form
-        onSubmit={handleSubmit(submitHandler)}
-        className="space-y-5"
-      >
+      <form onSubmit={handleSubmit(submit)} className="space-y-5">
         <FormInput
           {...{
             id: 'NationalCode',

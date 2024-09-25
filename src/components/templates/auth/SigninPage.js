@@ -10,15 +10,19 @@ import signinSchema from '@/validations/signinSchema';
 import { signinAction } from '@/actions/auth/signinAction';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/features/authSlice';
 
 const SigninPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch()
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(signinSchema);
 
   const submit = async (values) => {
     const res = await signinAction(values);
     if (res.status) {
+      dispatch(setUser(res.user));
       toast.success(res.message);
       router.push('/dashboard');
       return;

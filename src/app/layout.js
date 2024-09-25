@@ -2,6 +2,7 @@ import '@/assets/styles/globals.css';
 import { mikhak } from '@/assets/fonts';
 import { Toaster } from 'sonner';
 import toastConfigsDefault from '@/configs/toast';
+import Providers from '@/providers';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html className="" lang="fa-IR" dir="rtl">
       <body className={mikhak.className}>
-        {children}
+        <Providers>{children}</Providers>
         <Toaster {...toastConfigsDefault} />
       </body>
     </html>

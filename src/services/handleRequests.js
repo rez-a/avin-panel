@@ -1,4 +1,5 @@
 import { ECONNABORTED } from '@/constants/axiosCode';
+import { toast } from 'sonner';
 
 const handleRequests = async (instance, options = {}) => {
   try {
@@ -6,12 +7,9 @@ const handleRequests = async (instance, options = {}) => {
     return res?.data;
   } catch (error) {
     if (error.code === ECONNABORTED)
-      return { status: false, message: error.message };
+      return toast.error(error.message);
 
-    return {
-      ...error?.response?.data,
-      message: error?.response?.data?.data,
-    };
+    return toast.error(error?.response?.data?.data);
   }
 };
 

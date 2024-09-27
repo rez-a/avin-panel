@@ -12,6 +12,14 @@ const API_URLS = {
       URL: '/token/check/',
       METHOD: 'post',
     },
+    CODE_REQUEST: {
+      URL: '/user/recoverpass/',
+      METHOD: 'post',
+    },
+    CHANGE_PASSWORD: {
+      URL: '/user/newpass/',
+      METHOD: 'put',
+    },
   },
 };
 

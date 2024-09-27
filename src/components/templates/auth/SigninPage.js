@@ -11,7 +11,7 @@ import { signinAction } from '@/actions/auth/signinAction';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/features/authSlice';
+import { setToken, setUser } from '@/features/authSlice';
 
 const SigninPage = () => {
   const router = useRouter();
@@ -21,13 +21,14 @@ const SigninPage = () => {
 
   const submit = async (values) => {
     const res = await signinAction(values);
-    if (res.status) {
+    if (res?.status) {
       dispatch(setUser(res.user));
+      dispatch(setToken(res.token));
       toast.success(res.message);
       router.push('/dashboard');
       return;
     }
-    toast.error(res.message);
+    // toast.error(res.message);
   };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">

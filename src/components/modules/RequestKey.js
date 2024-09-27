@@ -4,14 +4,25 @@ import requestKeySchema from '@/validations/requestKeySchema';
 import React from 'react';
 import FormInput from '../shared/form/FormInput';
 import Button from '../extras/buttons/Button';
+import Link from 'next/link';
+import { handleCodeRequestForForgottenPassword } from '@/services/api/handleAuth';
+import { toast } from 'sonner';
+import TOAST_MESSAGE from '@/constants/toastMessage';
 
-const RequestKey = ({ setCodedRequest }) => {
+const RequestKey = ({ setKeyRequest, setCodeExpirationTime }) => {
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(requestKeySchema);
 
-  const submitHandler = (values) => {
-    setCodedRequest();
-    console.log(values);
+  const submit = async (values) => {
+    const res = await handleCodeRequestForForgottenPassword(values);
+    console.log(res);
+    if (res?.status) {
+      toast.success(
+        TOAST_MESSAGE.CODE_REQUEST.SUCCESS(values.PhoneNumber)
+      );
+      setKeyRequest(res.data.Key);
+      setCodeExpirationTime(res.data.exp);
+    }
   };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
@@ -19,10 +30,7 @@ const RequestKey = ({ setCodedRequest }) => {
       <p className="mb-7">
         برای تعیین رمزعبور جدید شماره همراه خود را وارد کنید
       </p>
-      <form
-        onSubmit={handleSubmit(submitHandler)}
-        className="space-y-5"
-      >
+      <form onSubmit={handleSubmit(submit)} className="space-y-5">
         <FormInput
           {...{
             id: 'PhoneNumber',
@@ -42,6 +50,17 @@ const RequestKey = ({ setCodedRequest }) => {
           title="درخواست کد"
         />
       </form>
+      <div className="relative my-7 h-5 text-center before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-[#ebedf2] dark:before:bg-[#253b5c]">
+        <div className="relative z-[1] inline-block bg-white px-2 font-bold text-white-dark dark:bg-[#0e1726]">
+          <span>یا</span>
+        </div>
+      </div>
+      <p className="text-center">
+        نیازی به بازیابی رمز عبور خود ندارید؟
+        <Link href="./signin" className="link">
+          ورود
+        </Link>
+      </p>
     </div>
   );
 };

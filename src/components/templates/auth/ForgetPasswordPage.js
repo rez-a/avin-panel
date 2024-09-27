@@ -4,16 +4,23 @@ import RequestKey from '@/components/modules/RequestKey';
 import React, { useState } from 'react';
 
 const ForgetPasswordPage = () => {
-  const [codedRequest, setCodedRequest] = useState(false);
+  const [keyRequest, setKeyRequest] = useState(null);
+  const [codeExpirationTime, setCodeExpirationTime] = useState(null);
+  console.log(keyRequest);
   return (
     <>
-      {codedRequest ? (
+      {keyRequest ? (
         <ChangePassword
-          setCodedRequest={() => setCodedRequest(!codedRequest)}
+          setKeyRequest={() => setKeyRequest(null)}
+          keyRequest={keyRequest}
+          codeExpirationTime={codeExpirationTime}
         />
       ) : (
         <RequestKey
-          setCodedRequest={() => setCodedRequest(!codedRequest)}
+          setKeyRequest={(key) => setKeyRequest(key)}
+          setCodeExpirationTime={(time) =>
+            setCodeExpirationTime(time)
+          }
         />
       )}
     </>

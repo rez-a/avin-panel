@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 const CountDown = ({
   isFinishedCountDown,
   setIsFinishedCountDown,
+  numberOfSeconds = DEFAULT_COUNTDOWN,
 }) => {
-  const [second, setSecond] = useState(DEFAULT_COUNTDOWN);
+  const [second, setSecond] = useState(numberOfSeconds);
 
   useEffect(() => {
     if (second > 0) {

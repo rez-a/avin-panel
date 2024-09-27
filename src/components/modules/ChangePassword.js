@@ -6,30 +6,49 @@ import Button from '../extras/buttons/Button';
 import changePasswordSchema from '@/validations/changePasswordSchema';
 import { PASSWORD } from '@/constants/formTypes';
 import CountDown from '../extras/CountDown';
+import { handleChangePassword } from '@/services/api/handleAuth';
+import { toast } from 'sonner';
+import TOAST_MESSAGE from '@/constants/toastMessage';
+import { useRouter } from 'next/navigation';
 
-const ChangePassword = ({ setCodedRequest }) => {
+const ChangePassword = ({
+  setKeyRequest,
+  keyRequest,
+  codeExpirationTime,
+}) => {
   const [isFinishedCountDown, setIsFinishedCountDown] =
     useState(false);
+  const router = useRouter();
+
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(changePasswordSchema);
 
-  const submitHandler = (values) => {
-    console.log(values);
+    
+    const submit = async (values) => {
+    if (!isFinishedCountDown) {
+      const res = await handleChangePassword({
+        ...values,
+        Key: keyRequest,
+      });
+      if (res?.status) {
+        toast.success(TOAST_MESSAGE.CHANGE_PASSWORD.SUCCESS);
+        router.push('/signin');
+      }
+      return;
+    }
+    toast.error(TOAST_MESSAGE.CHANGE_PASSWORD.CODE_EXPIRED);
   };
 
   const editPhoneNumberHandler = () => {
-    setCodedRequest();
+    setKeyRequest();
   };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">تعیین رمز عبور جدید</h2>
       <p className="mb-7">
-        رمزعبور جدید بهمراه کد ارسال شده به شماره را وارد کنید
+        رمزعبور جدید بهمراه کد ارسال شده را وارد کنید
       </p>
-      <form
-        onSubmit={handleSubmit(submitHandler)}
-        className="space-y-5"
-      >
+      <form onSubmit={handleSubmit(submit)} className="space-y-5">
         <FormInput
           {...{
             id: 'Otp',
@@ -103,6 +122,7 @@ const ChangePassword = ({ setCodedRequest }) => {
           <CountDown
             isFinishedCountDown={isFinishedCountDown}
             setIsFinishedCountDown={setIsFinishedCountDown}
+            numberOfSeconds={codeExpirationTime}
           />
         </div>
       </div>

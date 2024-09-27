@@ -3,16 +3,16 @@
 import { AVIN_AUTH } from '@/constants/cookiesValue';
 import { jwtDecode } from 'jwt-decode';
 import { cookies } from 'next/headers';
-import { handleReviewToken } from './handleAuth';
+import { handleReviewToken } from '../services/api/handleAuth';
 import { tokenConfigs } from '@/configs/token';
 
-const decodeToken = (token) => {
+const decodeToken = async (token) => {
   const tokenDecoded = jwtDecode(token);
   return { ...tokenDecoded };
 };
 
-const insertToken = (token) => {
-  const { exp } = decodeToken(token);
+const insertToken = async (token) => {
+  const {exp} = await decodeToken(token);
   if (cookies().has(AVIN_AUTH)) deleteToken();
 
   cookies().set(AVIN_AUTH, token, {
@@ -20,11 +20,11 @@ const insertToken = (token) => {
   });
 };
 
-const deleteToken = () => {
+const deleteToken = async () => {
   cookies().delete(AVIN_AUTH);
 };
 
-const updateToken = (token) => {
+const updateToken = async (token) => {
   deleteToken();
   insertToken(token);
 };
@@ -38,11 +38,15 @@ const reviewToken = async () => {
     return false;
   }
 };
-
+const getToken = async () => {
+  const token = cookies().get(AVIN_AUTH)?.value;
+  return token;
+};
 export {
   decodeToken,
   insertToken,
   deleteToken,
   updateToken,
   reviewToken,
+  getToken,
 };

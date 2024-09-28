@@ -28,7 +28,6 @@ const SigninPage = () => {
       router.push('/dashboard');
       return;
     }
-    // toast.error(res.message);
   };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">

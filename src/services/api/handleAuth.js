@@ -19,10 +19,7 @@ const handleSignup = async (data) => {
     method: API_URLS.USER.SIGNUP.METHOD,
     data,
   });
-  if(res?.status) return res;
-  
-
-  
+  return res;
 };
 
 const handleReviewToken = async (data) => {

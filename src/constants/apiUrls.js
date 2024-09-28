@@ -1,23 +1,23 @@
 const API_URLS = {
   USER: {
     SIGNIN: {
-      URL: '/user/login/',
+      URL: '/user/login',
       METHOD: 'post',
     },
     SIGNUP: {
-      URL: '/user/create/',
+      URL: '/user/create',
       METHOD: 'post',
     },
     REVIEW_TOKEN: {
-      URL: '/token/check/',
+      URL: '/token/check',
       METHOD: 'post',
     },
     CODE_REQUEST: {
-      URL: '/user/recoverpass/',
+      URL: '/user/recoverpass',
       METHOD: 'post',
     },
     CHANGE_PASSWORD: {
-      URL: '/user/newpass/',
+      URL: '/user/newpass',
       METHOD: 'put',
     },
   },

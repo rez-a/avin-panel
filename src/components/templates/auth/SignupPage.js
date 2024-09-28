@@ -5,7 +5,6 @@ import Link from 'next/link';
 import React from 'react';
 import useHandleForm from '@/hooks/useHandleForm';
 import signupSchema from '@/validations/signupSchema';
-import { signupAction } from '@/actions/auth/signupAction';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 
@@ -15,16 +14,9 @@ const SignupPage = () => {
     useHandleForm(signupSchema);
 
   const submit = async (values) => {
-    const res = await signupAction(values);
-    try {
-      if (res.status) toast.success(res.message);
-      else throw new Error();
-    } catch (err) {
-      toast.error(res.message);
-    } finally {
-      router.push('/signin');
-      return;
-    }
+    const res = await handleSignup(values);
+    if (res.status) toast.success(res.message);
+    router.push('/signin');
   };
   return (
     <div className="panel m-6 w-full max-w-lg sm:w-[480px]">

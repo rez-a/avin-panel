@@ -12,10 +12,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className="" lang="fa-IR" dir="rtl">
+    <html lang="fa-IR" dir="rtl">
       <body className={mikhak.className}>
         <Providers>
-          <InitializeUser />
+          {/* <InitializeUser /> */}
           {children}
         </Providers>
         <Toaster {...toastConfigsDefault} />

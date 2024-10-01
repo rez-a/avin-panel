@@ -32,7 +32,7 @@ const CountDown = ({
         </small>
       ) : (
         <p
-          className={`text-sm  ${
+          className={`text-xs  ${
             lastSeconds
               ? 'animate-count-down text-danger'
               : 'text-primary'

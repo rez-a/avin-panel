@@ -2,10 +2,10 @@
 import useHandleForm from '@/hooks/useHandleForm';
 import React, { useState } from 'react';
 import FormInput from '../shared/form/FormInput';
-import Button from '../extras/buttons/Button';
+import Button from '../buttons/Button';
 import changePasswordSchema from '@/validations/changePasswordSchema';
 import { PASSWORD } from '@/constants/formTypes';
-import CountDown from '../extras/CountDown';
+import CountDown from '../CountDown';
 import { handleChangePassword } from '@/services/api/handleAuth';
 import { toast } from 'sonner';
 import TOAST_MESSAGE from '@/constants/toastMessage';
@@ -23,8 +23,7 @@ const ChangePassword = ({
   const { addToRefs, register, handleSubmit, errors, isSubmitting } =
     useHandleForm(changePasswordSchema);
 
-    
-    const submit = async (values) => {
+  const submit = async (values) => {
     if (!isFinishedCountDown) {
       const res = await handleChangePassword({
         ...values,
@@ -43,9 +42,9 @@ const ChangePassword = ({
     setKeyRequest();
   };
   return (
-    <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
+    <div className="panel m-6 w-full max-w-md sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">تعیین رمز عبور جدید</h2>
-      <p className="mb-7">
+      <p className="mb-4 text-sm">
         رمزعبور جدید بهمراه کد ارسال شده را وارد کنید
       </p>
       <form onSubmit={handleSubmit(submit)} className="space-y-5">
@@ -115,7 +114,7 @@ const ChangePassword = ({
                 fill="currentColor"
               ></path>
             </svg>
-            <span className="text-sm">ویرایش شماره همراه</span>
+            <span className="text-xs">ویرایش شماره همراه</span>
           </button>
         </div>
         <div>

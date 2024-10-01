@@ -1,5 +1,5 @@
 'use client';
-import Button from '@/components/extras/buttons/Button';
+import Button from '@/components/buttons/Button';
 import FormInput from '@/components/shared/form/FormInput';
 import Link from 'next/link';
 import React from 'react';
@@ -15,14 +15,21 @@ const SignupPage = () => {
 
   const submit = async (values) => {
     const res = await handleSignup(values);
-    if (res.status) toast.success(res.message);
-    router.push('/signin');
+    if (res.status) {
+      toast.success(res.message);
+      router.push('/signin');
+    }
   };
   return (
-    <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
+    <div className="panel m-6 w-full max-w-md sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">ثبت نام</h2>
-      <p className="mb-7">برای ثبت نام اطلاعات زیر را تکمیل کنید</p>
-      <form onSubmit={handleSubmit(submit)} className="space-y-5">
+      <p className="mb-7 text-sm">
+        برای ثبت نام اطلاعات زیر را تکمیل کنید
+      </p>
+      <form
+        onSubmit={handleSubmit(submit)}
+        className="space-y-5 text-sm"
+      >
         <FormInput
           {...{
             id: 'NationalCode',
@@ -65,11 +72,11 @@ const SignupPage = () => {
         />
       </form>
       <div className="relative my-7 h-5 text-center before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-[#ebedf2] dark:before:bg-[#253b5c]">
-        <div className="relative z-[1] inline-block bg-white px-2 font-bold text-white-dark dark:bg-[#0e1726]">
+        <div className="relative z-[1] inline-block bg-white px-2 font-bold text-gray-400 dark:bg-[#0e1726]">
           <span>یا</span>
         </div>
       </div>
-      <p className="text-center">
+      <p className="text-center text-xs">
         حساب کاربری دارید؟
         <Link href="./signin" className="link">
           ورود

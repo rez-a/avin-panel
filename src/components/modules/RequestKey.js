@@ -3,7 +3,7 @@ import useHandleForm from '@/hooks/useHandleForm';
 import requestKeySchema from '@/validations/requestKeySchema';
 import React from 'react';
 import FormInput from '../shared/form/FormInput';
-import Button from '../extras/buttons/Button';
+import Button from '../buttons/Button';
 import Link from 'next/link';
 import { handleCodeRequestForForgottenPassword } from '@/services/api/handleAuth';
 import { toast } from 'sonner';
@@ -15,7 +15,6 @@ const RequestKey = ({ setKeyRequest, setCodeExpirationTime }) => {
 
   const submit = async (values) => {
     const res = await handleCodeRequestForForgottenPassword(values);
-    console.log(res);
     if (res?.status) {
       toast.success(
         TOAST_MESSAGE.CODE_REQUEST.SUCCESS(values.PhoneNumber)
@@ -25,9 +24,9 @@ const RequestKey = ({ setKeyRequest, setCodeExpirationTime }) => {
     }
   };
   return (
-    <div className="panel m-6 w-full max-w-lg sm:w-[480px]">
+    <div className="panel m-6 w-full max-w-md sm:w-[480px]">
       <h2 className="mb-3 text-2xl font-bold">درخواست کد</h2>
-      <p className="mb-7">
+      <p className="mb-4 text-sm">
         برای تعیین رمزعبور جدید شماره همراه خود را وارد کنید
       </p>
       <form onSubmit={handleSubmit(submit)} className="space-y-5">
@@ -51,11 +50,11 @@ const RequestKey = ({ setKeyRequest, setCodeExpirationTime }) => {
         />
       </form>
       <div className="relative my-7 h-5 text-center before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-[#ebedf2] dark:before:bg-[#253b5c]">
-        <div className="relative z-[1] inline-block bg-white px-2 font-bold text-white-dark dark:bg-[#0e1726]">
+        <div className="relative z-[1] inline-block bg-white px-2 font-bold text-gray dark:bg-[#0e1726]">
           <span>یا</span>
         </div>
       </div>
-      <p className="text-center">
+      <p className="text-center text-xs">
         نیازی به بازیابی رمز عبور خود ندارید؟
         <Link href="./signin" className="link">
           ورود

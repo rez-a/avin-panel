@@ -2,6 +2,7 @@ import API_URLS from '@/constants/apiUrls';
 import handleRequests from '@/services/handleRequests';
 import authInstance from '@/services/instances/authInstance';
 import dashboardInstance from '@/services/instances/dashboardInstance';
+import reviewResponse from '@/utilities/reviewResponse';
 
 const handleSignin = async (data) => {
   const res = await handleRequests(authInstance, {
@@ -19,7 +20,7 @@ const handleSignup = async (data) => {
     method: API_URLS.USER.SIGNUP.METHOD,
     data,
   });
-  return res;
+  reviewResponse(res);
 };
 
 const handleReviewToken = async (data) => {
@@ -38,7 +39,7 @@ const handleCodeRequestForForgottenPassword = async (data) => {
     data,
   });
 
-  return res;
+  reviewResponse(res);
 };
 
 const handleChangePassword = async (data) => {
@@ -48,7 +49,7 @@ const handleChangePassword = async (data) => {
     data,
   });
 
-  return res;
+  reviewResponse(res);
 };
 
 export {

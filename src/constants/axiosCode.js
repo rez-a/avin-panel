@@ -1,1 +1,2 @@
 export const ECONNABORTED = 'ECONNABORTED';
+export const ENOTFOUND = 'ENOTFOUND';

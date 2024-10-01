@@ -11,6 +11,9 @@ const TOAST_MESSAGE = {
     SUCCESS: 'رمز عبور شما با موفقیت تغییر یافت',
     CODE_EXPIRED: 'کد ارسال شده برای شما منقضی شده است',
   },
+  REQUEST: {
+    ENOTFOUND:'لطفا اینترنت خود را بررسی کنید'
+  },
 };
 
 export default TOAST_MESSAGE;

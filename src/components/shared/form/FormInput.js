@@ -30,8 +30,8 @@ const FormInput = ({
           ref={addToRefs}
           {...register(name)}
           className={`form-input ${
-            type === PASSWORD &&
-            'ltr:rounded-r-none rtl:rounded-l-none'
+            type === PASSWORD ?
+            'ltr:rounded-r-none rtl:rounded-l-none' : ''
           }`}
         />
         {type === PASSWORD && <ViewPassword {...{ view, setView }} />}

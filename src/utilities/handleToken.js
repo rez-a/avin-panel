@@ -15,6 +15,9 @@ const insertToken = async (token) => {
   const {exp} = await decodeToken(token);
   if (cookies().has(AVIN_AUTH)) deleteToken();
 
+  console.log(AVIN_AUTH, token, {
+    ...tokenConfigs(exp),
+  });
   cookies().set(AVIN_AUTH, token, {
     ...tokenConfigs(exp),
   });

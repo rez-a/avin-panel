@@ -15,6 +15,7 @@ const RequestKey = ({ setKeyRequest, setCodeExpirationTime }) => {
 
   const submit = async (values) => {
     const res = await handleCodeRequestForForgottenPassword(values);
+    console.log(res)
     if (res?.status) {
       toast.success(
         TOAST_MESSAGE.CODE_REQUEST.SUCCESS(values.PhoneNumber)

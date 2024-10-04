@@ -20,7 +20,7 @@ const handleSignup = async (data) => {
     method: API_URLS.USER.SIGNUP.METHOD,
     data,
   });
-  reviewResponse(res);
+  return reviewResponse(res);
 };
 
 const handleReviewToken = async (data) => {
@@ -39,7 +39,7 @@ const handleCodeRequestForForgottenPassword = async (data) => {
     data,
   });
 
-  reviewResponse(res);
+  return reviewResponse(res);
 };
 
 const handleChangePassword = async (data) => {
@@ -49,7 +49,7 @@ const handleChangePassword = async (data) => {
     data,
   });
 
-  reviewResponse(res);
+  return reviewResponse(res);
 };
 
 export {

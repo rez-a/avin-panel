@@ -1,19 +1,20 @@
-import React from 'react';
+import React from "react";
 
 const Button = ({
   isSubmitting,
-  type = 'button',
-  variant = 'btn-primary',
+  type = "button",
+  variant = "btn-primary",
   title,
+  full = true,
 }) => {
   return (
     <button
-      disabled={type === 'button' ? false : isSubmitting}
+      disabled={type === "button" ? false : isSubmitting}
       type={type}
-      className={`btn w-full ${variant}`}
+      className={`btn ${full ? "w-full" : "w-auto"} ${variant}`}
     >
       {title}
-      {type !== 'button' && isSubmitting && (
+      {type !== "button" && isSubmitting && (
         <svg
           viewBox="0 0 24 24"
           width="24"

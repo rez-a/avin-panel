@@ -1,16 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import BtnIcon from '../buttons/BtnIcon';
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import BtnIcon from "../buttons/BtnIcon";
 
 const Header = () => {
   return (
-    <header className="shadow-md p-2 px-6 flex items-center justify-between">
+    <header className="shadow-md p-2 px-6 flex items-center justify-between bg-white">
       <div className="flex items-center">
-        <Link
-          href="/dashboard"
-          className="main-logo flex items-center"
-        >
+        <Link href="/dashboard" className="main-logo flex items-center">
           <div className="relative h-10 w-10">
             <Image
               className="object-cover rounded-full"
@@ -19,9 +16,10 @@ const Header = () => {
               layout="fill"
             />
           </div>
-          <span className="hidden align-middle text-2xl text-green-500 font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline">
-            AVIN
-          </span>
+          <p className="align-middle  text-green-500 font-semibold transition-all duration-300 ltr:ml-2 rtl:mr-2 dark:text-white-light md:inline">
+            <span className="text-base block">AVIN</span>
+            <span className="block text-xs">پخش لوازم آرایشی آوین</span>
+          </p>
         </Link>
         <BtnIcon className="ltr:ml-6 rtl:mr-6">
           <svg
@@ -82,11 +80,14 @@ const Header = () => {
           </svg>
         </BtnIcon>
         <BtnIcon className="ltr:ml-6 rtl:mr-2">
-          <img
-            alt="image"
-            className="h-5 w-5 rounded-full object-cover"
-            src="/images/EN.svg"
-          />
+          <div className="h-5 w-5 relative">
+            <Image
+              alt="image"
+              className=" rounded-full object-cover"
+              src="/images/EN.svg"
+              layout="fill"
+            />
+          </div>
         </BtnIcon>
       </div>
       <div className="flex items-center gap-2">

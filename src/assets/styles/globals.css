@@ -26,7 +26,7 @@
     @apply font-bold text-primary hover:underline;
   }
   .panel {
-    @apply relative rounded-md border p-4 bg-white dark:bg-dark dark:border-dark;
+    @apply relative rounded-md border shadow p-4 bg-white dark:bg-dark dark:border-dark;
   }
   .form-input {
     @apply w-full rounded-md border border-[#E0E6ED] p-2 text-sm leading-5 font-semibold outline-none focus:border-primary dark:bg-dark-color-secondary dark:border-dark-color-primary/10 dark:focus:border-primary;
@@ -44,7 +44,9 @@
     @apply mb-1 flex w-full items-center justify-between overflow-hidden text-nowrap rounded-md p-3;
   }
 }
-
+input::placeholder {
+font-size: x-small;
+}
 @keyframes count-down {
   75%,
   100% {

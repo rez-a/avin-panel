@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import BtnIcon from '../buttons/BtnIcon';
-import NavLinks from './NavLinks';
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import BtnIcon from "../buttons/BtnIcon";
+import NavLinks from "./NavLinks";
 
 const Sidebar = () => {
   return (
@@ -10,10 +10,7 @@ const Sidebar = () => {
       <nav className="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-64 shadow-[5px_0_25px_0_rgba(94,92,154,0.3)] transition-all duration-300">
         <div className="h-full bg-white dark:bg-dark px-4 py-4">
           <div className="flex items-center justify-between border-b pb-4">
-            <Link
-              href="/dashboard"
-              className="main-logo flex items-center"
-            >
+            <Link href="/dashboard" className="main-logo flex items-center">
               <div className="relative h-10 w-10">
                 <Image
                   className="object-cover rounded-full"
@@ -22,9 +19,10 @@ const Sidebar = () => {
                   layout="fill"
                 />
               </div>
-              <span className="hidden align-middle text-2xl text-green-500 font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline">
-                AVIN
-              </span>
+              <p className="align-middle  text-green-500 font-semibold transition-all duration-300 ltr:ml-2 rtl:mr-2 dark:text-white-light md:inline">
+                <span className="text-base block">AVIN</span>
+                <span className="block text-xs">پخش لوازم آرایشی آوین</span>
+              </p>
             </Link>
             <BtnIcon>
               <svg

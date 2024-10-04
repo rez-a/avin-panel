@@ -40,6 +40,9 @@
   .animate-count-down {
     animation: count-down 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+  .nav-link {
+    @apply mb-1 flex w-full items-center justify-between overflow-hidden text-nowrap rounded-md p-3;
+  }
 }
 
 @keyframes count-down {

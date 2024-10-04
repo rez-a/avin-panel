@@ -2,13 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import BtnIcon from '../buttons/BtnIcon';
+import NavLinks from './NavLinks';
 
 const Sidebar = () => {
   return (
     <aside>
-      <nav className="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-64 shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300">
+      <nav className="sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-64 shadow-[5px_0_25px_0_rgba(94,92,154,0.3)] transition-all duration-300">
         <div className="h-full bg-white dark:bg-dark px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between border-b pb-4">
             <Link
               href="/dashboard"
               className="main-logo flex items-center"
@@ -52,6 +53,7 @@ const Sidebar = () => {
               </svg>
             </BtnIcon>
           </div>
+          <NavLinks />
         </div>
       </nav>
     </aside>

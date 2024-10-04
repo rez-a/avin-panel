@@ -6,7 +6,7 @@ const DashboardLayout = async ({ children }) => {
   return (
     <>
       <Sidebar />
-      <main className='mr-64'>
+      <main className="mr-64 z-10">
         <Header />
         {children}
       </main>
